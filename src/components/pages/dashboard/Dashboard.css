@@ -22,10 +22,9 @@
     justify-content: space-between;
 }
 
-.name{
+.name, .phone{
     flex: 1;
-}
-
-.phone{
-    flex: 1;
+    font-size: 20px;
+    font-weight: bold;
+    color: grey;
 }

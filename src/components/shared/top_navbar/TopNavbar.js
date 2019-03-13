@@ -1,26 +1,29 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 
 // Import component stylesheet
 import './TopNavbar.css';
 
-const TopNavbar = () => {
-
-    return (
-    <div className='navbar'>
-        <ul>
-            <li>
-                <Link 
-                    className = 'link' 
-                    style={{ textDecoration: 'none' }}
-                    to='/'
-                >
-                Phonebook Directory
-                </Link>
-            </li>
-        </ul>
-    </div>
-    );
+class TopNavbar extends React.Component{
+    render(){
+        
+        const { pathname } = this.props.location; 
+        return (
+        <div className='navbar'>
+            <ul>
+                <li>
+                    <Link 
+                        className = 'link' 
+                        style={{ textDecoration: 'none' }}
+                        to='/'
+                    >
+                    {pathname === '/' ? 'Phonebook Directory' : 'Add Subscriber'}
+                    </Link>
+                </li>
+            </ul>
+        </div>
+        );
+    }   
 }
 
-export default TopNavbar;
+export default withRouter(props => <TopNavbar {...props}/>);
