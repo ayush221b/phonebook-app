@@ -32,7 +32,7 @@ export default class Dashboard extends Component {
 
         // Populate array with all subscribers except the one to be deleted
         subscribers.forEach(sub => {
-            if(sub.name != subscriber.name) {
+            if(sub.name !== subscriber.name) {
                 updatedSubs.push(sub);
             }
         });

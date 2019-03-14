@@ -14,8 +14,8 @@ class App extends Component {
         <div className="App">
           <TopNavbar/>
           <Switch>
-            <Route path='/' exact component={Dashboard} />
-            <Route path='/add' component={Add} />
+            <Route path={process.env.PUBLIC_URL + '/'} exact component={Dashboard} />
+            <Route path={process.env.PUBLIC_URL + '/add'} component={Add} />
           </Switch>
         </div>
       </BrowserRouter>
