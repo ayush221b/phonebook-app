@@ -1,3 +1,9 @@
+## Phonebook Directory Application
+
+This project was developed as a Proof-of-Concept for a Frontend Development Internship at upGrad.
+
+## Boilerplate Details
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
