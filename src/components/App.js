@@ -10,12 +10,12 @@ import TopNavbar from "./shared/top_navbar/TopNavbar";
 class App extends Component {
   render() {
     return (
-      <BrowserRouter>
+      <BrowserRouter basename={process.env.PUBLIC_URL}>
         <div className="App">
           <TopNavbar/>
           <Switch>
-            <Route path={process.env.PUBLIC_URL + '/'} exact component={Dashboard} />
-            <Route path={process.env.PUBLIC_URL + '/add'} component={Add} />
+            <Route path='/' exact component={Dashboard} />
+            <Route path='/add' component={Add} />
           </Switch>
         </div>
       </BrowserRouter>
