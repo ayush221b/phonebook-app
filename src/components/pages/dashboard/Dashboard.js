@@ -1,3 +1,4 @@
+// Import React modules
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
@@ -14,35 +15,42 @@ export default class Dashboard extends Component {
     }
 
     componentDidMount() {
-
+        
+        // Check if component was loaded from /add route or directly
         if(this.props.location.state === undefined){
             this.setState({ subscribers:[] });
         } else{
             const { subscribers } = this.props.location.state; 
-        this.setState({ subscribers });
+            this.setState({ subscribers });
         }
     }
 
+    // Handle Delete button press
     removeSubscriber = (subscriber) => {
-
         const { subscribers } = this.state;
         const updatedSubs = [];
 
+        // Populate array with all subscribers except the one to be deleted
         subscribers.forEach(sub => {
             if(sub.name != subscriber.name) {
                 updatedSubs.push(sub);
             }
         });
 
+        // setState with updated array
         this.setState({
             subscribers: updatedSubs
         });
     }
 
     render() {
-        const { subscribers } = this.state;
-        console.log('Current Subscribers Count : '+ this.state.subscribers.length);
 
+        // ES6 destructuring
+        const { subscribers } = this.state;
+
+        // console.log('Current Subscribers Count : '+ this.state.subscribers.length);
+
+        // Create a Button Component which routes to Add page
         const AddButton = () => (
             <Link
                 to={{ pathname: '/add', state: this.state }}
@@ -59,6 +67,8 @@ export default class Dashboard extends Component {
         return (
         <div className='dashboard'>
             <AddButton/>
+
+            { /* Create Column Labels above values */ }
             <div className="container">
                 <div className="name">
                     NAME
@@ -70,9 +80,11 @@ export default class Dashboard extends Component {
                 </div>
             </div>
 
+            { /* Populate values in columns */ }
+            
             { subscribers.map(subscriber => {
                 return (
-                    <div className="container">
+                    <div className="container-values">
                         <div className="name-value">
                             { subscriber.name }
                         </div>

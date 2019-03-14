@@ -4,17 +4,6 @@
     overflow-y: visible;
 }
 
-.button-add, .button-delete {
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    cursor: pointer;
-}
-
 .button-add{
     background-color: #4CAF50;
 }
@@ -23,9 +12,13 @@
     background-color: red;
 }
 
-.container {
+.container{
     margin-top: 20px;
-    padding: 20px;
+}
+
+.container, .container-values {
+    margin-bottom: 20px;
+    padding: 0 10px;
     display: flex;
     justify-content: space-around;
 }
