@@ -50,7 +50,7 @@ export default class Add extends Component {
         const SubmitButton = () => {
             return (
                     <button
-                        className='add-button'
+                        className='button-add'
                         type="button" 
                         onClick={this.handleFormSubmit}
                     >

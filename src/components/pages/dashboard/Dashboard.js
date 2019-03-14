@@ -23,16 +23,32 @@ export default class Dashboard extends Component {
         }
     }
 
-    render() {
+    removeSubscriber = (subscriber) => {
 
-        console.log('Current Subscribers  : '+ this.state.subscribers.length);
+        const { subscribers } = this.state;
+        const updatedSubs = [];
+
+        subscribers.forEach(sub => {
+            if(sub.name != subscriber.name) {
+                updatedSubs.push(sub);
+            }
+        });
+
+        this.setState({
+            subscribers: updatedSubs
+        });
+    }
+
+    render() {
+        const { subscribers } = this.state;
+        console.log('Current Subscribers Count : '+ this.state.subscribers.length);
 
         const AddButton = () => (
             <Link
                 to={{ pathname: '/add', state: this.state }}
-                className='submit-button'>
+                >
                 <button
-                    className='add-button'
+                    className='button-add'
                     type="button" 
                 >
                     ADD
@@ -50,7 +66,32 @@ export default class Dashboard extends Component {
                 <div className="phone">
                     PHONE
                 </div>
+                <div className="delete-buttons">
+                </div>
             </div>
+
+            { subscribers.map(subscriber => {
+                return (
+                    <div className="container">
+                        <div className="name-value">
+                            { subscriber.name }
+                        </div>
+                        <div className="phone-value">
+                            { subscriber.phone }
+                        </div>
+                        <div className="delete-buttons">
+                            <button 
+                                className='button-delete'
+                                onClick={ ()=> {
+                                    this.removeSubscriber(subscriber);
+                                } }
+                                >
+                                Delete
+                            </button>
+                        </div>
+                    </div>
+                );
+            }) }
         </div>
         );
     }
