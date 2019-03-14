@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 
 // Import Component Style
 import './Dashboard.css';
@@ -9,37 +9,40 @@ export default class Dashboard extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            subscribers : []
-        }
+            subscribers: []
+        };
     }
 
     componentDidMount() {
-        const subscribers = this.state.subscribers.push({
-            name: this.props.location.state.name, 
-            phone: this.props.location.state.phone
-        });
-        
-        this.setState({subscribers});
-    }
 
-    onAddButtonClick = () => {
-        alert('Add button was clicked');
+        if(this.props.location.state === undefined){
+            this.setState({ subscribers:[] });
+        } else{
+            const { subscribers } = this.props.location.state; 
+        this.setState({ subscribers });
+        }
     }
 
     render() {
-        const Button = withRouter(({ history }) => (
-            <button
-                className='add-button'
-                type="button" 
-                onClick={() => { history.push('/add') }}
-            >
-                ADD
-            </button>
-        ));
+
+        console.log('Current Subscribers  : '+ this.state.subscribers.length);
+
+        const AddButton = () => (
+            <Link
+                to={{ pathname: '/add', state: this.state }}
+                className='submit-button'>
+                <button
+                    className='add-button'
+                    type="button" 
+                >
+                    ADD
+                </button>
+            </Link>
+        );
 
         return (
         <div className='dashboard'>
-            <Button/>
+            <AddButton/>
             <div className="container">
                 <div className="name">
                     NAME

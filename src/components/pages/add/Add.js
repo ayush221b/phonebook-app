@@ -1,15 +1,18 @@
 import React, { Component } from 'react';
-import {Link} from 'react-router-dom';
+import { Link,Redirect } from 'react-router-dom';
 
 import './Add.css';
 
+let updatedSubscribers = [];
+
 export default class Add extends Component {
 
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             name: '',
-            phone:''
+            phone:'',
+            toDashboard: false
         };
     }
 
@@ -25,20 +28,36 @@ export default class Add extends Component {
         });
     }
 
+    handleFormSubmit = () => {
+        const { subscribers } = this.props.location.state;
+
+        updatedSubscribers = subscribers;
+        updatedSubscribers.push({
+            name: this.state.name,
+            phone: this.state.phone
+        });
+
+        this.setState({toDashboard: true});
+    }
+
     render() {
-        const SubmitButton = () => (
-            <Link
-                to={{ pathname: '/', state: { name: this.state.name, phone: this.state.phone} }}
-                className='submit-button'>
-                <button
-                    className='add-button'
-                    type="button" 
-                    onClick={()=>{}}
-                >
-                    ADD
-                </button>
-            </Link>
-        );
+
+        if (this.state.toDashboard === true) {
+            console.log(updatedSubscribers);
+            return <Redirect to={{ pathname: '/', state: { subscribers: updatedSubscribers } }} />
+        }
+
+        const SubmitButton = () => {
+            return (
+                    <button
+                        className='add-button'
+                        type="button" 
+                        onClick={this.handleFormSubmit}
+                    >
+                        ADD
+                    </button>
+            );
+        }
 
         return (
         <div className='add-page'>
