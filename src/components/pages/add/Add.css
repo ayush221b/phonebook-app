@@ -1,4 +1,53 @@
 .add-page{
     margin-top: 10px;
-    padding: 20px;
+    padding: 20px 40px;
+}
+
+.back-link{
+    padding-left: 25px;
+    text-decoration: none;
+    color: black;
+}
+
+.add-form {
+    margin-top: 50px;
+}
+
+.input-field{
+    margin-bottom: 20px;
+    width: 250px;
+    height: 40px;
+    padding: 0 10px;
+    border: 1px solid grey;
+    border-radius: 3px;
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0; 
+}
+
+.field-label{
+    color: grey;
+    font-weight: 300;
+    font-size: 18px;
+}
+
+.display-label-top{
+    margin-top: 10px;
+    color: #1766A6;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.display-label{
+    color: grey;
+    font-size: 16px;
+}
+
+.submit-button {
+    cursor: pointer;
 }

@@ -12,7 +12,7 @@ ul {
     justify-content: center;
 }
 
-li > .link {
+.link {
     display: block;
     color: white;
     text-align: center;

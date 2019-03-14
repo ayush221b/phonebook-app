@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
 // Import component stylesheet
 import './TopNavbar.css';
@@ -11,14 +11,8 @@ class TopNavbar extends React.Component{
         return (
         <div className='navbar'>
             <ul>
-                <li>
-                    <Link 
-                        className = 'link' 
-                        style={{ textDecoration: 'none' }}
-                        to='/'
-                    >
+                <li className = 'link'>
                     {pathname === '/' ? 'Phonebook Directory' : 'Add Subscriber'}
-                    </Link>
                 </li>
             </ul>
         </div>
